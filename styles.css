@@ -32,7 +32,7 @@ h1,h3,h4,h5,h6{
 
 h2{
     font-family: var(--p-font);
-    font-size: clamp(1.25emem, 2.5vw, 2em);
+    font-size: clamp(1.25em, 5.5vw, 2em);
 }
 @supports (-webkit-text-stroke: 0.6px #737373){
     h2{
@@ -79,10 +79,6 @@ a.nav-link:hover{
 }
 
 /* main styles */
-
-main{
-    
-}
 
 section{
 padding: var(--padding);
@@ -155,7 +151,7 @@ i.fa{
 .subheader-txt{
     text-transform: uppercase;
     color: #6b6966;
-    font-size: 0.6em;
+    font-size: clamp(0.6em, 100vw/50, 1em)
 }
 img{
     display: block;
@@ -190,20 +186,35 @@ display: grid;
 grid-template-columns: 1fr;
 justify-items: end;
 gap: 8px;
-grid-template-areas: 
-'tech-doc'
-'landing-page'
-'survey-form';
+}
 
-}
-div.dev-grid:nth-child(1){
-    grid-area: tech-doc;
-}
-div.dev-grid:nth-child(2){
-    grid-area: landing-page;
-}
-div.dev-grid:nth-child(3){
-    grid-area: survey-form;
+@media screen and (min-width: 580px) {
+
+    /* Dev Projects Section */
+
+    div.dev-grid{
+        grid-template-columns: 1fr 1fr;
+       
+    }
+    div.tech-doc{
+        grid-column: 2;
+    }
+    div.project-outline.landing-page{
+        grid-column: 1;
+        grid-row: 2;
+        place-self: start;
+        padding: 0 0 0 1em;
+        box-shadow: -2px 2px 3px rgba(104, 105, 104, 0.2),
+        -2px 2px 5px rgba(121, 120, 126, 0.3);
+    }
+    div.project-outline.landing-page:hover{
+        padding: 0 0 0 3em;
+    }
+    
+    div.feedback{
+        grid-column: 2;
+        grid-row: 3;
+    }    
 }
 
 div.project-outline{
@@ -218,12 +229,12 @@ background: linear-gradient(-60deg, rgba(255, 0, 64, 0.5), rgb(141, 0, 129) );
 padding-right: 3em;
 }
 
-div.project-title{
+div.project-tile{
     width: 12.2em;
     height: 8.2em;
 }
 
-div.project-outline .project-title img{
+div.project-outline .project-tile img{
     width: 12.2em;
     height: 8.2em;
     object-fit: cover;
@@ -233,6 +244,8 @@ div.project-outline .project-title img{
 p.project-caption{
     font-family: var(--header-font);
     font-weight: bold;
+    font-size: clamp(0.8em, 2.9vw, 0.9em);
+    white-space: nowrap;
 }
 
 /* Design projects styles */
@@ -246,6 +259,7 @@ div.design-grid{
     grid-template-columns: repeat(3, 1fr);
     row-gap: 24px;
     column-gap: 8px;
+    min-width: 253px;
     grid-template-areas: 
     'logofolio a-text a-text'
     ' ui-design a-text a-text'
@@ -264,7 +278,12 @@ div.sub-grid header{
     font-size: 1.2em;
     padding: 0.5em;
 }
-p.test{
+div.sub-grid:hover{
+    background: rgb(245, 245, 245);
+    box-shadow: rgba(111, 111, 114, 0.25) 0px 1px 8px inset, rgba(242, 206, 245, 0.3) 0px 3px 8px inset;
+    transform: rotateY(10deg)
+}
+p.banner-t{
     grid-area: a-text;
     writing-mode: vertical-rl;
     font-size: 3em;
@@ -281,6 +300,32 @@ p.test{
 }
 .architecture{
     grid-area: architecture;
+}
+
+ /* Design Projects section */
+ @media screen and (min-width: 385px) and (max-width: 768px) {
+     div.design-grid{
+         max-width: 16.5em;
+         margin: 0 auto;
+     }
+ }
+
+@media screen and (min-width: 768px) {
+    
+    div.design-grid{
+        grid-template-areas: 
+        'logofolio ui-design graphics'
+        ' . architecture .'
+        'a-text a-text a-text';
+        justify-items: center;
+    }
+    
+    p.banner-t{
+        writing-mode: horizontal-tb;
+        font-size: 4em;
+        margin: 0 auto;
+    }
+
 }
 
 section#contact{
