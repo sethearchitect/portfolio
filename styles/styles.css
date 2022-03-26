@@ -200,9 +200,6 @@ i.fa{
 */
 
 /* Create dedicated style sheet */
-main#logofolio{
-    padding: 2em 6%;
-}
 
 section#projects, section#design-projects, section.anecdotes{   
     margin-bottom: 4em;
@@ -352,8 +349,7 @@ div.design-grid{
     grid-template-areas: 
     'logofolio a-text a-text'
     ' ui-design a-text a-text'
-    'architecture a-text a-text'
-    'graphics a-text a-text';
+    'architecture a-text a-text';
 }
 div.sub-grid{
     display: flex;
@@ -384,9 +380,7 @@ p.banner-t{
 .ui-design{
     grid-area: ui-design;
 }
-.graphics{
-    grid-area: graphics;
-}
+
 .architecture{
     grid-area: architecture;
 }
@@ -403,8 +397,7 @@ p.banner-t{
     
     div.design-grid{
         grid-template-areas: 
-        'logofolio ui-design graphics'
-        ' . architecture .'
+        'logofolio ui-design architecture'
         'a-text a-text a-text';
         justify-items: center;
     }
