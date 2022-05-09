@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "This is a simple portfolio page written in HTML and CSS.",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass styles/scss/main.scss styles/css/styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sethearchitect/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sethearchitect/portfolio/issues"
+  },
+  "homepage": "https://github.com/sethearchitect/portfolio#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}
