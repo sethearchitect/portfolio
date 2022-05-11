@@ -1,22 +1,31 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "This is a simple portfolio page written in HTML and CSS.",
-  "main": "index.js",
-  "scripts": {
-    "sass": "node-sass styles/scss/main.scss styles/css/styles.css -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sethearchitect/portfolio.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sethearchitect/portfolio/issues"
-  },
-  "homepage": "https://github.com/sethearchitect/portfolio#readme",
-  "dependencies": {
-    "node-sass": "^7.0.1"
-  }
+    "name": "portfolio",
+    "version": "1.0.0",
+    "description": "the_architect's personal portfolio site",
+    "main": "public/index.html",
+    "author": "the_architect",
+    "scripts": {
+        "build:sass": "sass  --no-source-map src/sass:public/css",
+        "copy:html": "copyfiles -u 1 ./src/*.html public",
+        "copy:images": "copyfiles -u 1 ./src/images/**/* public",
+        "copy": "npm-run-all --parallel copy:*",
+        "watch:html": "onchange \"src/*.html\" -- npm run copy:html",
+        "watch:images": "onchange \/src/images/**/*\" -- npm run copy:images",
+        "watch:sass": "sass  --no-source-map --watch src/sass:public/css",
+        "watch": "npm-run-all --parallel watch:*",
+        "serve": "browser-sync start --server public --files public",
+        "start": "npm-run-all copy --parallel watch serve",
+        "build": "npm-run-all copy:html build:*",
+        "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map"
+    },
+    "dependencies": {
+        "autoprefixer": "^10.4.2",
+        "browser-sync": "^2.27.7",
+        "copyfiles": "^2.4.1",
+        "cssnano": "^5.0.17",
+        "npm-run-all": "^4.1.5",
+        "onchange": "^7.1.0",
+        "postcss-cli": "^9.1.0",
+        "sass": "^1.49.8"
+    }
 }
